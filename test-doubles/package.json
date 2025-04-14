@@ -1,9 +1,16 @@
 {
   "type": "module",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "serve:time": "http-server -c-1 -p 8080 . -o currentTime.html",
+    "serve:search": "http-server -c-1 -p 8080 . -o githubSearch.html"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^26.1.0",
+    "msw": "^2.7.4",
     "vitest": "^3.1.1"
   },
   "dependencies": {

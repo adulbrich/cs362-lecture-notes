@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Repository Search</title>
+    <script type="module" src="githubSearch.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md p-6 m-6">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">GitHub Repository Search</h1>
+        <form id="search-form" class="mb-6">
+            <div class="flex flex-col mb-6">
+            <input placeholder="Search for a repository" id="query" name="query" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+            />
+        </div>
+            <button type="submit" class="w-full flex justify-center py-2 px-4 mb-6 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+            >Search</button>
+        </form>
+        <ul id="results-list" class="flex flex-col gap-2 justify-center"></ul>
+    </body>
+</html>
