@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "scripts": {
+    "serve:counter": "http-server -c-1 -p 8080 . -o counter.html",
+    "serve:photos": "http-server -c-1 -p 8080 . -o photos.html",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^26.0.0",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
