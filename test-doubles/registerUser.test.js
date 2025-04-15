@@ -1,11 +1,11 @@
 import { test, expect, vi } from "vitest";
 import { registerUser } from "./registerUser.js";
-import { Database } from "./database.js";
+import { DB } from "./sqliteDatabase.js";
 
 test("saves user record in database", () => {
   const email = "iamfake@oregonstate.edu";
   const password = "pa$$Word123";
-  const spy = vi.spyOn(Database, "save");
+  const spy = vi.spyOn(DB, "save");
 
   spy.mockImplementation(() => {});
 
@@ -33,7 +33,7 @@ test("saves user record in database", () => {
 test("returns null on database error", () => {
   const email = "iamfake@oregonstate.edu";
   const password = "pa$$Word123";
-  const spy = vi.spyOn(Database, "save");
+  const spy = vi.spyOn(DB, "save");
 
   spy.mockImplementation(() => {
     throw new Error();

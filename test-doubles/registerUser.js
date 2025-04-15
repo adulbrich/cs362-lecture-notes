@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { Database } from "./database.js";
+import { DB } from "./sqliteDatabase.js";
 
 export function registerUser(email, password) {
   const record = {
@@ -7,9 +7,12 @@ export function registerUser(email, password) {
     password: bcrypt.hashSync(password, 8),
   };
   try {
-    const userId = Database.save(record);
+    const userId = DB.save(record);
     return userId;
   } catch {
     return null;
   }
 }
+
+// registerUser("ulbrical@oregonstate.edu", "123abcABC!");
+// console.log(DB.findByEmail("ulbrical@oregonstate.edu"));

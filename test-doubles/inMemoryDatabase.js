@@ -1,7 +1,7 @@
 /**
  * A simple in-memory database implementation
  */
-export class Database {
+export class DB {
   static _data = {};
   static _idCounter = 1;
 
@@ -36,6 +36,15 @@ export class Database {
       Object.values(this._data).find((record) => record[field] === value) ||
       null
     );
+  }
+
+  /**
+   * Finds a record by email
+   * @param {string} email - The email to search for
+   * @returns {Object|null} The record or null if not found
+   */
+  static findByEmail(email) {
+    return this.findByField("email", email);
   }
 
   /**
