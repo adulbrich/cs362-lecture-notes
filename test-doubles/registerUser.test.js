@@ -1,15 +1,38 @@
-import { test, expect, vi } from "vitest";
+import { test, expect, vi, beforeEach } from "vitest";
 import { registerUser } from "./registerUser.js";
-import { DB } from "./sqliteDatabase.js";
+import { DB as FakeDatabase } from "./inMemoryDatabase.js";
+
+// vi.mock("./database.js", () => {
+//   return {
+//     DB: {
+//       _data: {},
+//       _idCounter: 1,
+//       save: vi.fn((record) => {
+//         const id = DB._idCounter++;
+//         DB._data[id] = { ...record, id };
+//         return id;
+//       }),
+//       reset: vi.fn(() => {
+//         DB._data = {};
+//         DB._idCounter = 1;
+//       }),
+//     },
+//   };
+// });
+
+beforeEach(() => {
+  FakeDatabase.reset();
+  vi.clearAllMocks();
+});
 
 test("saves user record in database", () => {
   const email = "iamfake@oregonstate.edu";
   const password = "pa$$Word123";
-  const spy = vi.spyOn(DB, "save");
+  const spy = vi.spyOn(FakeDatabase, "save");
 
-  spy.mockImplementation(() => {});
+  // spy.mockImplementation(() => {});
 
-  registerUser(email, password);
+  registerUser(email, password, FakeDatabase);
 
   expect(spy).toHaveBeenCalled();
   expect(spy).toHaveBeenCalledTimes(1);
@@ -33,13 +56,13 @@ test("saves user record in database", () => {
 test("returns null on database error", () => {
   const email = "iamfake@oregonstate.edu";
   const password = "pa$$Word123";
-  const spy = vi.spyOn(DB, "save");
+  const spy = vi.spyOn(FakeDatabase, "save");
 
   spy.mockImplementation(() => {
     throw new Error();
   });
 
-  const response = registerUser(email, password);
+  const response = registerUser(email, password, FakeDatabase);
   expect(response).toBeNull();
 
   spy.mockRestore();

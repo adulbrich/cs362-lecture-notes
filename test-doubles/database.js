@@ -62,7 +62,7 @@ export class DB {
    */
   static reset() {
     db.exec("DELETE FROM users");
-    db.exec('DELETE FROM sqlite_sequence WHERE name = "users"');
+    db.exec("DELETE FROM sqlite_sequence WHERE name = 'users'");
   }
 
   /**
