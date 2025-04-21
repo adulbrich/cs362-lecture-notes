@@ -60,6 +60,10 @@
 	}
 </script>
 
+<svelte:head>
+    <title>Todo App</title> 
+</svelte:head>
+
 <div class="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-center px-4 py-8">
 	<h1 class="mb-6 text-3xl font-bold">Todo List</h1>
 
